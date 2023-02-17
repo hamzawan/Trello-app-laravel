@@ -1,0 +1,86 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel API",
+        "description": "",
+        "contact": {
+            "email": "admin@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "Local server"
+        },
+        {
+            "url": "http://my-default-host.com",
+            "description": "Testing server"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Home page",
+                "operationId": "1e3168201d1558717ff8078e57a2b335",
+                "responses": {
+                    "default": {
+                        "description": "Welcome page"
+                    }
+                }
+            }
+        },
+        "/beauty/list-customer-service-bookings": {
+            "post": {
+                "tags": [
+                    "beauty_customer_bookings"
+                ],
+                "summary": "List Customer Bookings.",
+                "operationId": "Beauty_Customer_Bookings",
+                "parameters": [
+                    {
+                        "name": "customer_id",
+                        "in": "query",
+                        "description": "customer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": "482"
+                        }
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "validation errors."
+                    },
+                    "200": {
+                        "description": "Customer Bookings."
+                    },
+                    "401": {
+                        "description": "auth failed."
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "User API"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "Authentication_Token": {
+                "type": "apiKey",
+                "description": "An authorization header. Example: Token",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
